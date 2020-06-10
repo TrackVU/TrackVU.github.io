@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>MicroUnit1Slides.utf8</title>
+    <meta charset="utf-8" />
+    <link href="MicroUnit1Slides_files/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="VictoriaUniversity.css" type="text/css" />
+    <link rel="stylesheet" href="VictoriaUniversity-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: title-slide
+background-image: url(https://raw.githubusercontent.com/SportStatisticsRSweet/WCSF_WorkshopInR/master/WhittenOval.jpg)
+background-size: cover 
+.center[ 
+# Analysing &amp; Visualising Sport Science Data in R   
+## Alice Sweeting, PhD  
+]
+.center[
+&lt;img src="TRAIN_WORD.png" width="20%", align="middle"/&gt;
+]
+ 
+
+
+
+---
+class: left, top, inverse
+background-image: url(https://images.pexels.com/photos/551993/pexels-photo-551993.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940)
+background-size: cover 
+
+
+# This Session
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+Data in sport science
+
+--
+
+Analyse and visualise a sport dataset in Excel
+&lt;br&gt;
+
+--
+
+Benefits of learning a programming language for sport science
+&lt;br&gt;
+
+--
+
+Getting started with R/ RStudio
+&lt;br&gt;
+
+--
+
+Analyse and visualise a sport dataset in RStudio
+
+
+---
+class: right, inverse
+background-image: url(https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940)
+background-size: cover 
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+# Sport Science Data Sources
+
+Profiling an athlete's strength output over time
+
+--
+
+Analysing individual or team skilled performance
+
+--
+
+Assessing an athlete's readiness to train
+
+--
+
+Measuring physical output during training and matches
+
+--
+
+Monitoring athlete daily wellness
+
+
+---
+class: left, top, inverse
+background-image: url(https://images.pexels.com/photos/209817/pexels-photo-209817.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940)
+background-size: cover 
+
+
+# Issues with Sport Science Data 
+
+
+
+* Abundance of data (and sources)
+--
+&lt;br&gt;
+  * From varying technologies at differing sample rates
+--
+&lt;br&gt;
+  * Often stored in multiple file formats
+
+&lt;br&gt;
+--
+
+
+* Datasets often need (manual) cleaning and merging
+--
+&lt;br&gt;
+  * Likely performed in programs external to data capture source
+  
+&lt;br&gt;
+--
+
+
+* Extensive process to import, analyse and visualise data
+--
+&lt;br&gt;
+  * Often performed in a siloed, time-consuming manner
+--
+&lt;br&gt;
+  * Issues with reproducibility
+  
+---
+class: center, top
+
+# What program(s) do you use to to analyse, visualise &amp; report on sport science data?
+
+--
+
+&lt;img src="https://pbs.twimg.com/media/EUaL5vYUwAESgMC?format=png&amp;name=900x900" align="middle" width="80%"/&gt;
+
+---
+class: bottom, left, inverse
+background-image: url(https://cdn.pixabay.com/photo/2014/10/14/20/24/the-ball-488714_960_720.jpg)
+background-size: cover 
+
+# Working with (example) data in Excel
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+Click [here](https://bit.ly/MicroUnit1Data) to download the example data.
+&lt;br&gt;
+&lt;br&gt;
+
+
+---
+
+class: center, top
+
+# Advantages of Excel for Sport Science
+
+.left[
+* Easy to download, install, open.
+]
+
+--
+.left[
+* Interactive, (fairly) friendly to save, send, open and edit
+]
+--
+.left[
+* Point and click to enter data, create figures, calculate math
+]
+--
+.left[
+* Many tabs = data entry, analysis, visualisation, (dashboard) reporting
+]
+--
+.left[
+* Can even run (basic to advanced) statistics!
+]
+--
+.left[
+* Help is never far away...
+]
+ 
+&lt;img src="https://media.giphy.com/media/eCz0zwSl7qxB6/giphy.gif" width="40%", align="right"/&gt;
+
+
+---
+class: left, top
+background-image: url(https://images.pexels.com/photos/1524620/pexels-photo-1524620.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940)
+background-size: cover
+
+# Any Hurdles?
+
+---
+class: left, top
+background-image: url(https://cdn.pixabay.com/photo/2016/10/26/12/48/excel-1771393_960_720.jpg)
+background-size: cover
+
+---
+
+class: center, top
+
+# Benefits of Programming for Sport Science
+
+.left[
+* Type a line of code, run code and instantly see/ save output 
+]
+--
+.left[
+* Quickly create beautiful and insightful [graphics](https://ggplot2.tidyverse.org/) 
+]
+--
+.left[
+* Ideal for [reproducibility](https://github.com/ropensci/reproducibility-guide) and accessiblity in research
+]
+--
+.left[
+* Difficult to manipulate raw, underlying data/ relies on "pulling" data into environment
+]
+--
+.left[
+* Automate time-consuming workflows and generate specific [reports](https://rmarkdown.rstudio.com/)
+]
+--
+.left[
+* Create [presentations](https://github.com/yihui/xaringan) from code (such as this one!)
+]
+--
+.left[
+* Share content, research, materials via [websites](https://github.com/rstudio/blogdown) and custom-designed [apps](https://shiny.rstudio.com/)
+]
+&lt;img src="https://cdn.pixabay.com/photo/2015/10/23/11/09/download-1002802_960_720.jpg" width="20%", align="right"/&gt;
+
+---
+class: center, top
+
+# Why Learn to Program in R? 
+
+.left[
+* Free, powerful and open-source, developed with statistics and graphics in mind.   
+]
+
+--
+
+.left[
+* User-created [packages](https://cran.r-project.org/web/packages/available_packages_by_name.html) that allow for data cleaning, manipulation, visualisation and reporting.
+]
+
+--
+
+.left[
+* Annual [UseR!](https://www.r-project.org/conferences/) Conferences, [The R Journal](https://journal.r-project.org/), local and online [communities](https://blog.revolutionanalytics.com/local-r-groups.html), that also support diversity: [RLadies](https://www.meetup.com/en-AU/rladies-melbourne/)
+]
+&lt;br&gt;
+&lt;img src="https://cdn.pixabay.com/photo/2018/11/29/21/51/social-media-3846597_960_720.png" width="50%", align="middle"/&gt;
+
+
+---
+
+class: center, top
+.center[
+# Starting out in R/ RStudio
+]
+
+.left[
+* First, install [R](https://www.r-project.org/) (required) from your local CRAN and as per your O/S.
+]
+
+--
+.left[
+* Next, install [RStudio Desktop](https://rstudio.com/products/rstudio/download/), as it is a friendly interface to learn and use R.
+]
+
+--
+.left[
+* Plenty of free, online resources to learn how to program in R, including [RStudio Education](https://education.rstudio.com/).
+]
+--
+.left[
+* Online Q&amp;A forum [Stack Overflow](https://stackoverflow.com/) also contains a community of help. 
+]
+--
+.left[
+* My number 1 resource for learning R is [R for Data Science](https://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham
+]
+&lt;br&gt;
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png" width="60%", align="middle"/&gt;
+.footnote[
+Image Source: [**R for Data Science**](https://r4ds.had.co.nz/introduction.html)
+]
+
+---
+class: center, top
+background-image: url(https://cdn.pixabay.com/photo/2016/02/19/10/00/binoculars-1209011_960_720.jpg)
+background-size: cover
+
+# Taking a Closer Look at RStudio
+
+---
+class: left, top
+.center[
+# Setting up the R Workspace
+]
+
+
+1. Ensure R and RStudio are downloaded. 
+&lt;br&gt;
+&lt;br&gt;
+--
+
+2. Create a new project in RStudio: `File -&gt; New Project -&gt; New Directory -&gt; New Project`. 
+&lt;br&gt;
+.center[
+&lt;img src="https://raw.githubusercontent.com/SportStatisticsRSweet/WCSF_WorkshopInR/master/Figures/CreateNewProject.png" width="35%", align="middle"/&gt;
+]
+--
+
+
+* Using this approach will contain all your files, scripts and data in one location
+
+
+* Avoids having multiple .R and .RData files scattered within and across multiple folders!
+---
+
+class: left, top
+.center[
+# Setting up the R Workspace (cont.)
+]
+
+
+* Create a folder within your new project (either via RStudio or manually) named "Data"
+
+
+--
+
+* Next, copy the example data (.xlsx) downloaded file into this "Data" folder
+
+
+--
+ 
+
+* Ensure the packages below are installed or up-to-date:
+
+
+```r
+# Create a list of the packages required
+IntroToRPackages &lt;- c(
+    'readxl',
+    'tidyverse', 
+    'viridis',
+    'ggridges',
+    'gghalves')
+# Install listed packages
+install.packages(IntroToRPackages)
+```
+--
+
+```r
+# Load the packages so we can use them!
+library(readxl)
+library(tidyverse)
+library(viridis)
+library(ggridges)
+library(gghalves)
+```
+
+---
+class: center, top
+background-image: url(https://www.tidyverse.org/images/tidyverse-default.png)
+background-size: cover
+
+---
+class: left, top
+.center[
+# Importing Example Data   
+]
+
+Import our example data, using the `readxl` package, which loads Excel (.xlsx) data into R
+
+
+```r
+# Load "RawData" sheet from our Excel file into R 
+RawData  &lt;- read_excel("Data/ExampleAthleteData.xlsx", sheet = "RawData")
+```
+
+--
+&lt;br&gt;
+.center[ 
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png" width="70%", align="middle"/&gt;
+.footnote[
+Image Source: [**R for Data Science**](https://r4ds.had.co.nz/introduction.html)
+]
+]
+
+---
+class: left, top
+.center[
+# Assessing Example Data   
+]
+
+Look at the underlying data structure in R
+
+
+```r
+# Assess the structure of imported data
+str(RawData)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	249 obs. of  4 variables:
+##  $ Date           : POSIXct, format: "2017-12-04" "2017-12-07" ...
+##  $ Athlete        : chr  "Gus Smith" "Gus Smith" "Gus Smith" "Gus Smith" ...
+##  $ Left Leg Force : num  294 310 349 433 303 474 345 325 358 366 ...
+##  $ Right Leg Force: num  297 315 360 412 307 457 354 336 395 373 ...
+```
+
+--
+&lt;br&gt;
+Turn our imported data into a [tibble](https://tibble.tidyverse.org/) - also known in the tidyverse as a "lazy" data.frame!
+
+
+```r
+# Create a tibble from our existing object named "Raw Data"
+RawData &lt;- as_tibble(RawData)
+```
+
+---
+class: left, top
+.center[
+# Assessing Example Data (cont.)   
+]
+
+
+```r
+# Lets inspect our tibble!
+RawData 
+```
+
+```
+## # A tibble: 249 x 4
+##    Date                Athlete   `Left Leg Force` `Right Leg Force`
+##    &lt;dttm&gt;              &lt;chr&gt;                &lt;dbl&gt;             &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith              294               297
+##  2 2017-12-07 00:00:00 Gus Smith              310               315
+##  3 2017-12-09 00:00:00 Gus Smith              349               360
+##  4 2017-12-09 00:00:00 Gus Smith              433               412
+##  5 2017-12-11 00:00:00 Gus Smith              303               307
+##  6 2017-12-11 00:00:00 Gus Smith              474               457
+##  7 2017-12-14 00:00:00 Gus Smith              345               354
+##  8 2017-12-16 00:00:00 Gus Smith              325               336
+##  9 2017-12-18 00:00:00 Gus Smith              358               395
+## 10 2018-01-09 00:00:00 Gus Smith              366               373
+## # ... with 239 more rows
+```
+
+--
+&lt;br&gt;
+.center[
+By default, a tibble will only print the first 10 rows, making it easier to work with large data in the console.
+]
+---
+class: left, top
+.center[
+# Assessing Example Data (cont.)   
+]
+
+Extract, or subset, by a column name and examine the first x entries
+--
+
+```r
+# Call out the first five entries of the "Athlete" column
+head(RawData$Athlete, 5) 
+```
+
+```
+## [1] "Gus Smith" "Gus Smith" "Gus Smith" "Gus Smith" "Gus Smith"
+```
+
+--
+&lt;br&gt;
+
+```r
+# Call out the first eight entries of the "Athlete" column
+head(RawData$Athlete, 8) 
+```
+
+```
+## [1] "Gus Smith" "Gus Smith" "Gus Smith" "Gus Smith" "Gus Smith" "Gus Smith"
+## [7] "Gus Smith" "Gus Smith"
+```
+
+--
+&lt;br&gt;
+
+```r
+# Call out the first ten entries of the "Left Leg Force" column
+head(RawData$`Left Leg Force`, 10) 
+```
+
+```
+##  [1] 294 310 349 433 303 474 345 325 358 366
+```
+
+---
+class: left, top
+.center[
+# Tidying Example Data    
+]
+&lt;br&gt;
+.center[ 
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png" width="70%", align="middle"/&gt;
+.footnote[
+Image Source: [**R for Data Science**](https://r4ds.had.co.nz/introduction.html)
+]
+]
+--
+&lt;br&gt;
+&lt;br&gt;
+.center[
+**Changing column names in R**
+]
+
+---
+class: left, top
+.center[
+# Tidying Example Data (cont.)   
+]
+
+
+```r
+# Rename columns - make them tidier
+colnames(RawData) &lt;- c("Date", "Athlete", "LeftLeg", "RightLeg") 
+```
+--
+
+```r
+# Inspect tibble, with new column names...
+RawData 
+```
+
+```
+## # A tibble: 249 x 4
+##    Date                Athlete   LeftLeg RightLeg
+##    &lt;dttm&gt;              &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith     294      297
+##  2 2017-12-07 00:00:00 Gus Smith     310      315
+##  3 2017-12-09 00:00:00 Gus Smith     349      360
+##  4 2017-12-09 00:00:00 Gus Smith     433      412
+##  5 2017-12-11 00:00:00 Gus Smith     303      307
+##  6 2017-12-11 00:00:00 Gus Smith     474      457
+##  7 2017-12-14 00:00:00 Gus Smith     345      354
+##  8 2017-12-16 00:00:00 Gus Smith     325      336
+##  9 2017-12-18 00:00:00 Gus Smith     358      395
+## 10 2018-01-09 00:00:00 Gus Smith     366      373
+## # ... with 239 more rows
+```
+
+---
+class: left, top
+.center[
+# Tidying Example Data (cont.)   
+]
+Wish to change the name of one column only?
+
+
+```r
+# Rename only one column
+RawData %&gt;% 
+  rename(Left = LeftLeg)
+```
+
+```
+## # A tibble: 249 x 4
+##    Date                Athlete    Left RightLeg
+##    &lt;dttm&gt;              &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith   294      297
+##  2 2017-12-07 00:00:00 Gus Smith   310      315
+##  3 2017-12-09 00:00:00 Gus Smith   349      360
+##  4 2017-12-09 00:00:00 Gus Smith   433      412
+##  5 2017-12-11 00:00:00 Gus Smith   303      307
+##  6 2017-12-11 00:00:00 Gus Smith   474      457
+##  7 2017-12-14 00:00:00 Gus Smith   345      354
+##  8 2017-12-16 00:00:00 Gus Smith   325      336
+##  9 2017-12-18 00:00:00 Gus Smith   358      395
+## 10 2018-01-09 00:00:00 Gus Smith   366      373
+## # ... with 239 more rows
+```
+
+---
+class: left, top
+.center[
+# Tidying Example Data (cont.)   
+]
+
+
+```r
+# Print column names
+colnames(RawData)
+```
+
+```
+## [1] "Date"     "Athlete"  "LeftLeg"  "RightLeg"
+```
+
+--
+
+
+```r
+# Inspect tibble
+RawData 
+```
+
+```
+## # A tibble: 249 x 4
+##    Date                Athlete   LeftLeg RightLeg
+##    &lt;dttm&gt;              &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith     294      297
+##  2 2017-12-07 00:00:00 Gus Smith     310      315
+##  3 2017-12-09 00:00:00 Gus Smith     349      360
+##  4 2017-12-09 00:00:00 Gus Smith     433      412
+##  5 2017-12-11 00:00:00 Gus Smith     303      307
+##  6 2017-12-11 00:00:00 Gus Smith     474      457
+##  7 2017-12-14 00:00:00 Gus Smith     345      354
+##  8 2017-12-16 00:00:00 Gus Smith     325      336
+##  9 2017-12-18 00:00:00 Gus Smith     358      395
+## 10 2018-01-09 00:00:00 Gus Smith     366      373
+## # ... with 239 more rows
+```
+
+---
+class: left, top
+.center[
+# Tidying Example Data (cont.)   
+]
+
+Remember to re-assign to original or new variable name!
+
+
+```r
+# Rename only one column - with re-assignment
+RawData &lt;- RawData %&gt;% 
+  rename(Left = LeftLeg, 
+         Right = RightLeg)
+```
+
+--
+
+
+```r
+# Inspect tibble
+RawData 
+```
+
+```
+## # A tibble: 249 x 4
+##    Date                Athlete    Left Right
+##    &lt;dttm&gt;              &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith   294   297
+##  2 2017-12-07 00:00:00 Gus Smith   310   315
+##  3 2017-12-09 00:00:00 Gus Smith   349   360
+##  4 2017-12-09 00:00:00 Gus Smith   433   412
+##  5 2017-12-11 00:00:00 Gus Smith   303   307
+##  6 2017-12-11 00:00:00 Gus Smith   474   457
+##  7 2017-12-14 00:00:00 Gus Smith   345   354
+##  8 2017-12-16 00:00:00 Gus Smith   325   336
+##  9 2017-12-18 00:00:00 Gus Smith   358   395
+## 10 2018-01-09 00:00:00 Gus Smith   366   373
+## # ... with 239 more rows
+```
+
+---
+
+class: center, top
+
+# Closer Inspection of Example Data 
+
+.left[
+* How many different athletes are in the example data?
+]
+--
+.left[
+
+```r
+# Inspect levels of athlete column
+levels(RawData$Athlete)
+```
+
+```
+## NULL
+```
+]
+
+--
+
+.left[
+
+```r
+# Make athlete column a factor
+RawData$Athlete &lt;- as.factor(RawData$Athlete)
+```
+]
+--
+
+.left[
+
+```r
+# Now inspect levels
+levels(RawData$Athlete)
+```
+
+```
+## [1] "Bobby Lewis"  "Dudley Jones" "Gus Smith"    "Hudson Lee"   "Tom Rivers"
+```
+]
+
+---
+class: left, top
+.center[
+# A Common Untidy Data Problem in Sport Science 
+]
+Problem = One variable is spread across multiple columns. Difficult to analyse with R!
+
+--
+
+Example data problem = One variable (force in N) is spread across multiple (Left and Right) columns.
+
+--
+
+
+```r
+# Closer inspection of data frame, to demonstrate "wide" format
+RawData 
+```
+
+```
+## # A tibble: 249 x 4
+##    Date                Athlete    Left Right
+##    &lt;dttm&gt;              &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith   294   297
+##  2 2017-12-07 00:00:00 Gus Smith   310   315
+##  3 2017-12-09 00:00:00 Gus Smith   349   360
+##  4 2017-12-09 00:00:00 Gus Smith   433   412
+##  5 2017-12-11 00:00:00 Gus Smith   303   307
+##  6 2017-12-11 00:00:00 Gus Smith   474   457
+##  7 2017-12-14 00:00:00 Gus Smith   345   354
+##  8 2017-12-16 00:00:00 Gus Smith   325   336
+##  9 2017-12-18 00:00:00 Gus Smith   358   395
+## 10 2018-01-09 00:00:00 Gus Smith   366   373
+## # ... with 239 more rows
+```
+
+
+---
+class: left, top
+.center[
+# A Common Untidy Data Problem in Sport Science 
+]
+
+Example data problem = One variable (force in N) is spread across multiple (Left and Right) columns.
+
+--
+
+Solution = pivot (using lovely `tidyverse` tools) from many columns to many rows, and less columns!
+
+
+```r
+# Using the dplyr package, we move from a "wide" to a "long" format
+RawData &lt;- RawData %&gt;% 
+     pivot_longer(c(`Left`, `Right`), names_to = "Leg", values_to = "Force")
+```
+
+--
+
+
+```r
+# Observe our pivoting!
+RawData 
+```
+
+```
+## # A tibble: 498 x 4
+##    Date                Athlete   Leg   Force
+##    &lt;dttm&gt;              &lt;fct&gt;     &lt;chr&gt; &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith Left    294
+##  2 2017-12-04 00:00:00 Gus Smith Right   297
+##  3 2017-12-07 00:00:00 Gus Smith Left    310
+##  4 2017-12-07 00:00:00 Gus Smith Right   315
+##  5 2017-12-09 00:00:00 Gus Smith Left    349
+##  6 2017-12-09 00:00:00 Gus Smith Right   360
+##  7 2017-12-09 00:00:00 Gus Smith Left    433
+##  8 2017-12-09 00:00:00 Gus Smith Right   412
+##  9 2017-12-11 00:00:00 Gus Smith Left    303
+## 10 2017-12-11 00:00:00 Gus Smith Right   307
+## # ... with 488 more rows
+```
+
+---
+class: left, top
+.center[
+# Common Untidy Data Problem(s) in Sport Science 
+]
+
+Example data problem = Extra stuff (maybe a jersey number?) all in the one column
+
+--
+
+Solution = seperate (again using lovely `tidyverse` tools) from one column to multiple!
+
+--
+
+```r
+# Seperate each athlete's name (one column) into two (firstname and surname) columns
+RawData &lt;- RawData %&gt;% 
+  separate(Athlete, into = c("Firstname", "Surname"), sep = " ")
+```
+--
+
+
+```r
+# Observe our seperating!
+RawData 
+```
+
+```
+## # A tibble: 498 x 5
+##    Date                Firstname Surname Leg   Force
+##    &lt;dttm&gt;              &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus       Smith   Left    294
+##  2 2017-12-04 00:00:00 Gus       Smith   Right   297
+##  3 2017-12-07 00:00:00 Gus       Smith   Left    310
+##  4 2017-12-07 00:00:00 Gus       Smith   Right   315
+##  5 2017-12-09 00:00:00 Gus       Smith   Left    349
+##  6 2017-12-09 00:00:00 Gus       Smith   Right   360
+##  7 2017-12-09 00:00:00 Gus       Smith   Left    433
+##  8 2017-12-09 00:00:00 Gus       Smith   Right   412
+##  9 2017-12-11 00:00:00 Gus       Smith   Left    303
+## 10 2017-12-11 00:00:00 Gus       Smith   Right   307
+## # ... with 488 more rows
+```
+
+---
+class: left, top
+.center[
+# Common Untidy Data Problem(s) in Sport Science 
+]
+
+Example data problem = Identifying athlete information spread across multiple columns (firstname and surname)
+
+--
+
+Solution = unite (again using lovely `tidyverse` tools) from multiple columns into one!
+
+--
+
+```r
+# Seperate each athlete's name (one column) into two (firstname and surname) columns
+RawData &lt;- RawData %&gt;% 
+  unite(Athlete, Firstname, Surname, sep = " ")
+```
+--
+
+
+```r
+# Observe our seperating!
+RawData 
+```
+
+```
+## # A tibble: 498 x 4
+##    Date                Athlete   Leg   Force
+##    &lt;dttm&gt;              &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith Left    294
+##  2 2017-12-04 00:00:00 Gus Smith Right   297
+##  3 2017-12-07 00:00:00 Gus Smith Left    310
+##  4 2017-12-07 00:00:00 Gus Smith Right   315
+##  5 2017-12-09 00:00:00 Gus Smith Left    349
+##  6 2017-12-09 00:00:00 Gus Smith Right   360
+##  7 2017-12-09 00:00:00 Gus Smith Left    433
+##  8 2017-12-09 00:00:00 Gus Smith Right   412
+##  9 2017-12-11 00:00:00 Gus Smith Left    303
+## 10 2017-12-11 00:00:00 Gus Smith Right   307
+## # ... with 488 more rows
+```
+
+
+---
+class: center, top
+.center[
+# Transforming Example Data    
+]
+
+
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png" width="70%", align="middle"/&gt;
+.footnote[
+Image Source: [**R for Data Science**](https://r4ds.had.co.nz/introduction.html)
+]
+--
+
+&lt;br&gt;
+**How do I quickly perform summary statistics in R, as I would in Excel?**
+
+---
+class: left, top
+.center[
+# Transforming Example Data    
+]
+
+
+Example data problem = I want to select one athlete's data for closer inspection.
+
+--
+
+Solution = filter (again using lovely `tidyverse` tools) observations. For example, call out data for "Gus Smith" only
+
+
+
+```r
+# Filter data to show only Gus Smith
+RawData %&gt;% 
+  filter(Athlete == "Gus Smith")
+```
+
+--
+
+
+```
+## # A tibble: 110 x 4
+##    Date                Athlete   Leg   Force
+##    &lt;dttm&gt;              &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith Left    294
+##  2 2017-12-04 00:00:00 Gus Smith Right   297
+##  3 2017-12-07 00:00:00 Gus Smith Left    310
+##  4 2017-12-07 00:00:00 Gus Smith Right   315
+##  5 2017-12-09 00:00:00 Gus Smith Left    349
+##  6 2017-12-09 00:00:00 Gus Smith Right   360
+##  7 2017-12-09 00:00:00 Gus Smith Left    433
+##  8 2017-12-09 00:00:00 Gus Smith Right   412
+##  9 2017-12-11 00:00:00 Gus Smith Left    303
+## 10 2017-12-11 00:00:00 Gus Smith Right   307
+## # ... with 100 more rows
+```
+
+---
+class: left, top
+.center[
+# Transforming Example Data    
+]
+
+
+Example data problem = I want to select data for all athletes but only one leg for closer inspection.
+
+--
+
+Solution = filter (again using lovely `tidyverse` tools) observations. For example, call out data for "Left" only
+
+
+
+```r
+# Filter data to show only Gus Smith
+RawData %&gt;% 
+  filter(Leg == "Left")
+```
+
+--
+
+
+```
+## # A tibble: 249 x 4
+##    Date                Athlete   Leg   Force
+##    &lt;dttm&gt;              &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith Left    294
+##  2 2017-12-07 00:00:00 Gus Smith Left    310
+##  3 2017-12-09 00:00:00 Gus Smith Left    349
+##  4 2017-12-09 00:00:00 Gus Smith Left    433
+##  5 2017-12-11 00:00:00 Gus Smith Left    303
+##  6 2017-12-11 00:00:00 Gus Smith Left    474
+##  7 2017-12-14 00:00:00 Gus Smith Left    345
+##  8 2017-12-16 00:00:00 Gus Smith Left    325
+##  9 2017-12-18 00:00:00 Gus Smith Left    358
+## 10 2018-01-09 00:00:00 Gus Smith Left    366
+## # ... with 239 more rows
+```
+
+---
+class: left, top
+.center[
+# Transforming Example Data    
+]
+
+
+Example data problem = I want to calculate the mean and SD of Force, for all athletes and both legs.
+
+--
+
+Solution = group by (again using lovely `tidyverse` tools) each athlete and give output for both legs.
+
+
+```r
+# Perform group by analysis - mean &amp; SD
+RawData %&gt;% 
+  group_by(Athlete, Leg) %&gt;% 
+  summarise(Mean = mean(Force),
+            SD = sd(Force))
+```
+--
+
+```
+## # A tibble: 10 x 4
+## # Groups:   Athlete [5]
+##    Athlete      Leg    Mean    SD
+##    &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 Bobby Lewis  Left   464.  29.1
+##  2 Bobby Lewis  Right  466.  26.4
+##  3 Dudley Jones Left   329.  26.9
+##  4 Dudley Jones Right  340.  27.9
+##  5 Gus Smith    Left   358.  43.5
+##  6 Gus Smith    Right  371.  46.1
+##  7 Hudson Lee   Left   410.  29.7
+##  8 Hudson Lee   Right  430.  29.6
+##  9 Tom Rivers   Left   503.  30.8
+## 10 Tom Rivers   Right  504.  30.9
+```
+
+
+---
+class: left, top
+.center[
+# Transforming Example Data    
+]
+
+
+Example data problem = I want to calculate the mean and SD of Force, for all athletes and both legs. But round it! And give me the median, too.
+
+--
+
+Solution = group_by (again using lovely `tidyverse` tools) with rounding to 1 decimal place.
+
+
+```r
+# Perform group by analysis - mean &amp; SD
+RawData %&gt;% 
+  group_by(Athlete, Leg) %&gt;% 
+  summarise(Mean = round(mean(Force),1),
+            SD = round(sd(Force),1),
+            Median = median(Force))
+```
+--
+
+```
+## # A tibble: 10 x 5
+## # Groups:   Athlete [5]
+##    Athlete      Leg    Mean    SD Median
+##    &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Bobby Lewis  Left   464.  29.1    470
+##  2 Bobby Lewis  Right  466.  26.4    473
+##  3 Dudley Jones Left   329   26.9    329
+##  4 Dudley Jones Right  340.  27.9    342
+##  5 Gus Smith    Left   358.  43.5    360
+##  6 Gus Smith    Right  371.  46.1    380
+##  7 Hudson Lee   Left   410.  29.7    407
+##  8 Hudson Lee   Right  430.  29.6    427
+##  9 Tom Rivers   Left   503.  30.8    503
+## 10 Tom Rivers   Right  504   30.9    505
+```
+
+---
+class: left, top
+.center[
+# Transforming Example Data    
+]
+
+
+Example data problem = I want to create a new column, whereby Force is expressed relative (N/ kg).
+
+--
+
+Solution = mutate (again using lovely `tidyverse` tools) to create a new column for relative force values.
+
+
+```r
+# Make Force data relative, for simplicity we assume all athletes are 80kg
+RawData %&gt;% 
+  mutate(RelativeForce = Force/80)
+```
+--
+
+```
+## # A tibble: 498 x 5
+##    Date                Athlete   Leg   Force RelativeForce
+##    &lt;dttm&gt;              &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;         &lt;dbl&gt;
+##  1 2017-12-04 00:00:00 Gus Smith Left    294          3.68
+##  2 2017-12-04 00:00:00 Gus Smith Right   297          3.71
+##  3 2017-12-07 00:00:00 Gus Smith Left    310          3.88
+##  4 2017-12-07 00:00:00 Gus Smith Right   315          3.94
+##  5 2017-12-09 00:00:00 Gus Smith Left    349          4.36
+##  6 2017-12-09 00:00:00 Gus Smith Right   360          4.5 
+##  7 2017-12-09 00:00:00 Gus Smith Left    433          5.41
+##  8 2017-12-09 00:00:00 Gus Smith Right   412          5.15
+##  9 2017-12-11 00:00:00 Gus Smith Left    303          3.79
+## 10 2017-12-11 00:00:00 Gus Smith Right   307          3.84
+## # ... with 488 more rows
+```
+
+---
+class: top, left, inverse
+background-image: url(https://cdn.pixabay.com/photo/2016/12/05/00/28/san-francisco-1882882_960_720.jpg)
+background-size: cover
+
+# Visualising Example Data
+
+---
+class: center, top
+
+# Visualising Example Data    
+
+.left[
+Create a simple plot of Force (N), over time, using `ggplot2` package.
+
+
+```r
+# Create a basic plot using ggplot2
+ggplot(RawData, aes(x = Date, y = Force)) +
+  geom_point()
+```
+]
+--
+.center[
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-6-1.png" width="936" /&gt;
+]
+
+---
+class: center, top
+# Visualising Example Data (cont.)  
+
+.left[
+How do we know what is the left leg or right leg?
+]
+--
+.left[
+Map each point with a corresponding colour for left and right legs
+
+```r
+# Add colour that denotes left or right leg
+ggplot(RawData, aes(x = Date, y = Force, colour = Leg)) +
+  geom_point()
+```
+]
+--
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-7-1.png" width="936" /&gt;
+
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I make seperate figures for each athlete and enhance the visual?
+]
+--
+.left[
+
+```r
+# Start with our classic template
+ggplot(RawData, aes(x = Date, y = Force, colour = Leg)) +
+# Create a scatterplot
+  geom_point() +
+# Make the theme "classic" for ease of interpretation
+  theme_classic() +
+# Move our legend from the RHS of the figure to the bottom
+  theme(legend.position = "bottom") +
+# Create a "wrap" by adding a new panel for each athlete
+  facet_wrap(~Athlete)
+```
+]
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I make seperate figures for each athlete and enhance the visual?
+]
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-8-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I make seperate figures for each athlete and **further** enhance the visual?
+]
+--
+.left[
+
+```r
+# Start with our classic template
+ggplot(RawData, aes(x = Date, y = Force, colour = Leg)) +
+# Create a scatterplot
+  geom_point() +
+# Add a label for the y-axis
+  ylab("\n Force (N)") +
+# Make the theme "classic" for ease of interpretation
+  theme_classic() +
+# Move our legend from the RHS of the figure to the bottom
+  theme(legend.position = "bottom",
+# Add more white space between the panels
+        panel.spacing = unit(1, "lines")) +
+# Create a "wrap" by adding a new panel for each athlete and set the scales to "free" for the x-axis
+  facet_wrap(~Athlete, scales = "free_x")
+```
+]
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I make seperate figures for each athlete and **further** enhance the visual?
+]
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-9-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I plot summary stats for each athlete?
+]
+--
+.left[
+
+```r
+# Start with our classic template
+ggplot(RawData, aes(x = Leg, y = Force)) +
+# Create a boxplot
+  geom_boxplot() +
+# Add a label for the y-axis
+  ylab("\n Force (N)") +
+# Make the theme "classic" for ease of interpretation
+  theme_classic() +
+# No legend placement is needed, as we are no longer mapping to a variable 
+  theme(#legend.position = "none",
+# Add more white space between the panels
+        panel.spacing = unit(1, "lines")) +
+# Create a "wrap" by adding a new panel for each athlete and set the scales to "free" for the x-axis
+  facet_wrap(~Athlete, scales = "free_x")
+```
+]
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I plot summary stats for each athlete?
+]
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-10-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I plot distributions for all athletes and both their legs?
+]
+--
+.left[
+
+```r
+# Start with our classic template, but now add fill and colour mappings
+ggplot(RawData, aes(Force, fill = Leg, colour = Leg)) +
+# Create a boxplot
+ geom_density(alpha = 0.8) +
+# Add a label for the x-axis
+  xlab("\n Force (N)") +
+# Make the theme "classic" for ease of interpretation
+  theme_classic() +
+# Move our legend from the RHS of the figure to the bottom
+  theme(legend.position = "bottom",
+# Remove y-axis label
+         axis.title.y = element_blank(),
+# Add more white space between the panels
+        panel.spacing = unit(1, "lines")) +
+# Create a "wrap" by adding a new panel for each athlete and set the scales to "free" for the x-axis
+  facet_wrap(~Athlete, scales = "free")
+```
+]
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I plot distributions for all athletes and both their legs?
+]
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-11-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+**However, what may be wrong with this figure?**
+
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-12-1.png" width="936" /&gt;
+
+---
+class: top, right, inverse
+background-image: url(https://cdn.pixabay.com/photo/2016/02/19/11/35/crayons-1209804_960_720.jpg)
+background-size: cover
+
+# Not Designing for Color-Vision Deficiency
+
+---
+class: center, top
+
+# Not Designing for Color-Vision Deficiency
+
+.left[
+* A proportion population may have some form of color-vision deficiency (i.e., are colorblind). 
+&lt;br&gt;
+&lt;br&gt;
+* These people may not be able to distinguish colors that look clearly different to most other people.
+]
+
+--
+.left[
+&lt;br&gt;
+* We should make slight modifications in ALL visuals so they safe for color-vision deficiency
+&lt;br&gt;
+&lt;br&gt;
+* Should also probably not color-code more than eight different items in a plot
+]
+--
+&lt;br&gt;
+.left[
+The `viridis` package contains colour scales to make visually pleasing plots that are likely easier to read by those with color-vision deficiency. You can read more about the package [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
+]
+
+.left[
+
+```r
+# Load the package - we already did so earlier in the session
+library(viridis)
+```
+]
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I plot *inclusive* distributions for all athletes and both their legs?
+]
+--
+.left[
+
+```r
+# Start with our classic template, but now add only fill mapping
+ggplot(RawData, aes(Force, fill = Leg)) +
+# Create a boxplot
+ geom_density(alpha = 0.8) +
+# Add a label for the x-axis
+  xlab("\n Force (N)") +
+# Add a call to the viridis palette
+  scale_fill_viridis(discrete=TRUE) +
+# Make the theme "classic" for ease of interpretation
+  theme_classic() +
+# Move our legend from the RHS of the figure to the bottom
+  theme(legend.position = "bottom",
+# Remove y-axis label
+         axis.title.y = element_blank(),
+# Add more white space between the panels
+        panel.spacing = unit(1, "lines")) +
+# Create a "wrap" by adding a new panel for each athlete and set the scales to "free" for the x-axis
+  facet_wrap(~Athlete, scales = "free")
+```
+]
+
+---
+class: center, top
+
+# Visualising Example Data (cont.)    
+
+.left[
+How do I plot *inclusive* distributions for all athletes and both their legs?
+]
+
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-14-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Violin Plots   
+
+.left[
+How do we add *context* to sport science data?
+]
+--
+.left[
+
+```r
+# Plot in ggplot2 - use our original dataset
+ggplot(RawData, 
+       aes(x = Leg, y = Force)) + 
+  # Add a violin plot to the mix
+  geom_violin() +
+  # Layer a boxplot ontop, scaling the width
+  geom_boxplot(width = 0.1) +
+  # Add our simple theme
+  theme_classic()
+```
+]
+
+---
+class: center, top
+
+# Violin Plots   
+
+.left[
+How do we add *context* to sport science data?
+]
+
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-15-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Violin Plots   
+
+.left[
+How do we add *context* to sport science data, repeating for each athlete?
+]
+--
+.left[
+
+```r
+# Plot in ggplot2 - use our original dataset
+ggplot(RawData, 
+       aes(x = Leg, y = Force)) + 
+  # Add a violin plot to the mix
+  geom_violin() +
+  # Layer a boxplot ontop, scaling the width
+  geom_boxplot(width = 0.1) +
+  # Add our simple theme
+  theme_classic() +
+  # Recreate individual box and volin plots for each athlete
+  facet_wrap(~Athlete)
+```
+]
+
+---
+class: center, top
+
+# Violin Plots   
+
+.left[
+How do we add *context* to sport science data, repeating for each athlete?
+]
+
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-16-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Ridge Plots   
+
+.left[
+How do we easily visualise two or more distributions in a succinct manner?
+]
+--
+.left[
+
+```r
+# Plot in ggplot2 - use our original dataset
+ggplot(RawData, aes(x = Force, y = Leg, fill = Leg)) +
+# Allow the plots to overlap
+ geom_density_ridges() +
+# Add a label for the x-axis
+  xlab("\n Force (N)") +
+# Add a call to the viridis palette, to create an accessible plot 
+  scale_fill_viridis(discrete=TRUE) +
+# Adjust the scaling of the plot, as we know we don't have any negative values! 
+# Be careful when using distributions, to ensure you aren't adding tails that are artificial
+# Also tails that don't make sense. For example, adding tails so you have negative deaths or height!
+# Make the theme "classic" for ease of interpretation
+  theme_classic() +
+# Our legend is now redundant, so remove
+  theme(legend.position = "none",
+# Remove y-axis label - it is implied by the text 
+         axis.title.y = element_blank())
+```
+]
+
+---
+class: center, top
+
+# Ridge Plots   
+
+.left[
+How do we easily visualise two or more distributions in a succinct manner?
+]
+
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-17-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Ridge Plots   
+
+.left[
+How do we easily visualise two or more distributions in a succinct manner?
+]
+--
+.left[
+
+```r
+# Plot in ggplot2 - use our original dataset
+ggplot(RawData, aes(x = Force, y = Leg, fill = Leg)) +
+# Allow the plots to overlap &amp; add in required info for point colour/ shape
+ geom_density_ridges(
+    aes(point_shape = Leg), 
+    alpha = .2, point_alpha = 1, jittered_points = TRUE) +
+  scale_point_color_hue(l = 40) + scale_point_size_continuous(range = c(0.5, 4)) +
+  scale_discrete_manual(aesthetics = "point_shape", values = c(21, 22)) +
+# Add a label for the x-axis
+  xlab("\n Force (N)") +
+# Add a call to the viridis palette, to create an accessible plot 
+ scale_fill_viridis(discrete=TRUE) +
+# Make the theme "classic" for ease of interpretation
+  theme_classic() +
+# Our legend is now redundant, so remove
+  theme(legend.position = "none",
+# Remove y-axis label - it is implied by the text 
+         axis.title.y = element_blank())
+```
+]
+
+---
+class: center, top
+
+# Ridge Plots   
+
+.left[
+How do we easily visualise two or more distributions in a succinct manner?
+]
+
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-18-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Ridge Plots   
+
+.left[
+How do we easily visualise two or more distributions, including summary statistics in a succinct manner?
+]
+--
+.left[
+
+```r
+# Plot in ggplot2 - use our original dataset
+ggplot(RawData, aes(x = Force, y = Leg, fill = factor(stat(quantile)))) +
+# Add quantiles = 2 which implies one line for the median
+stat_density_ridges(
+    geom = "density_ridges_gradient", calc_ecdf = TRUE,
+    quantiles = 2, quantile_lines = TRUE
+  ) +
+# Add a label for the x-axis
+  xlab("\n Force (N)") +
+# Add a call to the viridis palette, to create an accessible plot 
+   scale_fill_viridis_d(name = "Quartiles") +
+# Make the theme "classic" for ease of interpretation
+  theme_classic() +
+# Our legend is now required, but move to the bottom
+  theme(legend.position = "bottom",
+# Remove y-axis label - it is implied by the text 
+         axis.title.y = element_blank())
+```
+]
+
+---
+class: center, top
+
+# Ridge Plots   
+
+.left[
+How do we easily visualise two or more distributions, including summary statistics in a succinct manner?
+]
+
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-19-1.png" width="936" /&gt;
+
+---
+class: center, top
+
+# Raincloud Plots   
+
+.left[
+How do we easily visualise two or more distributions, including summary statistics and uncertainity, in a succinct manner?
+]
+--
+.left[
+
+```r
+# Plot in ggplot2 - use our original dataset
+ggplot(RawData, aes(x = Leg, y = Force, colour = Leg, fill = Leg)) +
+         # Add points
+         geom_half_point(side = "l", size = 0.3, colour = "black") + 
+        # Add a half boxplot
+         geom_half_boxplot(side = "l", width = 0.5, alpha = 0.3, nudge = 0.1, colour = "black") +
+        # Add a half violin
+         geom_half_violin(aes(colour = Leg), side = "r", colour = "black") +
+         guides(fill = FALSE, color = FALSE) +
+        # Add an accessible colour theme
+          scale_fill_viridis(discrete=TRUE) +
+        # Add a label for the y-axis
+          ylab("Force (N) \n") +
+        # Scale the y-axis, forcing it to start at 200 but end at 600
+        # You can also force the y-axis to commence at 0
+          scale_y_continuous(expand = c(0, 0), limits = c(200, 600)) +
+        # Scale the x-axis and add "Leg" to the label name
+          scale_x_discrete(labels=c("Left" = "Left Leg", "Right" = "Right Leg")) +
+         # Make the theme "classic" for ease of interpretation
+         theme_classic() +
+         # Further customise the theme
+         theme(axis.text.x = element_text(face="bold", color="black", size=14),
+               axis.text.y = element_text(face="bold", color="black",  size=12),
+               axis.title.x = element_blank(),
+               axis.title.y = element_text(face="bold", color="black", size=14))
+```
+]
+
+---
+class: center, top
+
+# Raincloud Plots   
+
+.left[
+How do we easily visualise two or more distributions, including summary statistics and uncertainity, in a succinct manner?
+]
+
+&lt;img src="MicroUnit1Slides_files/figure-html/unnamed-chunk-20-1.png" width="936" /&gt;
+
+---
+class: center, top
+# Resources on Visualising Data in R
+
+.left[
+* My number one resource for sport scientists is [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/).
+]
+&lt;img src="https://serialmentor.com/dataviz/cover.png" width="30%" align="bottom"/&gt;
+
+---
+class: center, top
+# Resources on Visualising Data in R
+
+.left[
+*  My number one resource for sport scientists is [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/).
+]
+
+.left[
+* Chapter 3 on Data Visualisation in [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html).
+]
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/b88ef926a004b0fce72b2526b0b5c4413666a4cb/24a30/cover.png" width="25%" align="bottom"/&gt;   
+
+
+---
+class: center, top
+# Resources on Visualising Data in R
+
+.left[
+*  My number one resource for sport scientists is [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/).
+]
+
+.left[
+* Chapter 3 on Data Visualisation in [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html).
+]
+
+.left[
+* Follow Alison Hill (Data Scientist) on [Twitter](https://twitter.com/apreshill) and her [(free) slides/ educational material](https://alison.rbind.io/projects/) including this fab talk at [RLadies Sydney on Data Visualisation](https://alison.netlify.com/rls-plot-twist/#1) 
+]
+&lt;br&gt;
+&lt;br&gt;
+&lt;img src="https://cdn.pixabay.com/photo/2017/05/09/13/33/laptop-2298286_960_720.png" width="25%" align="bottom"/&gt;  
+
+---
+class: center, top
+# Resources on Visualising Data in R
+
+.left[
+*  My number one resource for sport scientists is [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/).
+]
+
+.left[
+* Chapter 3 on Data Visualisation in [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html).
+]
+
+.left[
+* Follow Alison Hill (Data Scientist) on [Twitter](https://twitter.com/apreshill) and her [(free) slides/ educational material](https://alison.rbind.io/projects/) including this fab talk at [RLadies Sydney on Data Visualisation](https://alison.netlify.com/rls-plot-twist/#1) 
+]
+
+.left[
+* Check out Dr. Andrew Heiss’ online course on [Data Visualisation](https://datavizm20.classes.andrewheiss.com/). There is course content on visualisaing uncertainity, including [this](https://datavizm20.classes.andrewheiss.com/slides/06-slides.html#1) slide deck that includes my new favourite - raincloud plots!
+]
+&lt;br&gt;
+&lt;img src="https://cdn.pixabay.com/photo/2016/06/14/15/26/question-mark-1456854_960_720.jpg" width="25%" align="bottom"/&gt;  
+
+
+---
+class: inverse, left
+background-image: url(https://cdn.pixabay.com/photo/2020/03/10/16/47/moon-4919501_960_720.jpg)
+background-size: cover 
+
+# Thank you for listening!
+
+&lt;br&gt;
+&lt;br&gt;
+<i class="fas  fa-envelope "></i> [Alice.Sweeting@vu.edu.au](mailto:Alice.Sweeting@vu.edu.au)&lt;br&gt;&lt;br&gt;
+<i class="fab  fa-twitter "></i> [alicesweeting](https://twitter.com/alicesweeting)&lt;br&gt;&lt;br&gt;
+<i class="fab  fa-linkedin "></i> [/alicejsweeting](https://www.linkedin.com/in/alicejsweeting/)&lt;br&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;img src="TRACK_LIGHT_WHITE.png" width="25%" align="bottom"/&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
