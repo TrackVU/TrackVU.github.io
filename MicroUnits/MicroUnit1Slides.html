@@ -860,7 +860,7 @@ Solution = unite (again using lovely `tidyverse` tools) from multiple columns in
 --
 
 ```r
-# Seperate each athlete's name (one column) into two (firstname and surname) columns
+# Create one column called "Athlete" from two columns "Firstname" and "Surname"
 RawData &lt;- RawData %&gt;% 
   unite(Athlete, Firstname, Surname, sep = " ")
 ```
@@ -963,7 +963,7 @@ Solution = filter (again using lovely `tidyverse` tools) observations. For examp
 
 
 ```r
-# Filter data to show only Gus Smith
+# Filter data to show only left leg data
 RawData %&gt;% 
   filter(Leg == "Left")
 ```
