@@ -1282,7 +1282,7 @@ How do I plot distributions for all athletes and both their legs?
 ```r
 # Start with our classic template, but now add fill and colour mappings
 ggplot(RawData, aes(Force, fill = Leg, colour = Leg)) +
-# Create a boxplot
+# Create a density plot
  geom_density(alpha = 0.8) +
 # Add a label for the x-axis
   xlab("\n Force (N)") +
@@ -1373,7 +1373,7 @@ How do I plot *inclusive* distributions for all athletes and both their legs?
 ```r
 # Start with our classic template, but now add only fill mapping
 ggplot(RawData, aes(Force, fill = Leg)) +
-# Create a boxplot
+# Create a density plot
  geom_density(alpha = 0.8) +
 # Add a label for the x-axis
   xlab("\n Force (N)") +
